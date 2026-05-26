@@ -20,7 +20,7 @@ function sm2(card, quality) {
   return { ...card, interval, repetitions, easeFactor, nextReview: nextReview.toDateString(), lastReview: new Date().toDateString() }
 }
 
-const THEMES = {'
+const THEMES = {
   ink: {
     name: 'Ink', bg: '#0d0d0d', s1: '#161616', s2: '#1f1f1f', s3: '#2a2a2a',
     border: '#343232f0', border2: '#ffffff18', text: '#f0ece4', text2: '#9a9080', text3: '#a5a8ac',
