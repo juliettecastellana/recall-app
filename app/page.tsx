@@ -787,7 +787,7 @@ export default function Home() {
                   {sets.length>0&&(
                     <>
                       <div style={{...serifStyle,fontSize:'13px',color:C.text3,marginBottom:'12px'}}>Study sets</div>
-                      <div className="grid-1" ref={menuRef}>
+                      <div className="grid-3" ref={menuRef}>
                         {sets.map((s,i)=>{
                           const due = s.type==='video' ? (s.videoProgress?.inProgress ? (s.videoProgress.total - s.videoProgress.answered) : 0) : s.type==='flashcards' ? (s.cards||[]).filter(c => !c.nextReview || c.nextReview<=new Date().toDateString()).length : 0
                           return (
