@@ -191,11 +191,6 @@ export default function Home() {
     async function loadData() {
       if (!user) return
 
-      // Redirect to settings on first sign in
-      if (!prevUserRef.current && user) {
-        setJustSignedIn(true)
-        setScreen('settings')
-      }
       prevUserRef.current = user
 
       try {
@@ -772,9 +767,7 @@ export default function Home() {
                 <div style={{background:C.s1,border:`2px solid ${C.border}`,borderRadius:'16px',padding:'40px 24px',textAlign:'center'}}>
                   <div style={{fontSize:'18px',fontWeight:'500',marginBottom:'8px',...serifStyle}}>Welcome to Recall</div>
                   <div style={{fontSize:'14px',color:C.text3,marginBottom:'20px'}}>Sign in to save your sets and track your progress.</div>
-                  <SignInButton mode="modal">
-                    <button style={{padding:'12px 28px',background:C.accent,border:'none',borderRadius:'10px',color:'white',fontSize:'15px',cursor:'pointer',fontFamily:'inherit',fontWeight:'500'}}>Sign in</button>
-                  </SignInButton>
+                  <button onClick={()=>setScreen('settings')} style={{padding:'10px 24px',background:C.accent,border:'none',borderRadius:'8px',color:'white',fontSize:'13px',cursor:'pointer',fontFamily:'inherit',fontWeight:'500'}}>Sign in</button>
                 </div>
               ) : sets.length===0&&archivedSets.length===0 ? (
                 <div style={{background:C.s1,border:`2px solid ${C.border}`,borderRadius:'16px',padding:'40px 24px',textAlign:'center'}}>
@@ -1391,19 +1384,18 @@ export default function Home() {
       {/* Mobile bottom nav */}
       <div className="bottom-nav">
         {[
-          {id:'dashboard',icon:'🏠',label:'Home'},
-          {id:'create',icon:'✏️',label:'Create'},
-          {id:'study',icon:'📚',label:'Study'},
-          {id:'learn',icon:'✨',label:'Map'},
-          {id:'settings',icon:'⚙️',label:'Settings'},
-        ].map(({id,icon,label})=>(
-          <div key={id} className="bnav-item"
-            onClick={()=>navTo(id)}
-            style={{color:screen===id?C.accent:C.text3, background:screen===id?C.accentDim:'transparent'}}>
-            <span style={{fontSize:'22px',lineHeight:1}}>{icon}</span>
-            <span style={{fontSize:'10px',fontWeight:'500'}}>{label}</span>
-          </div>
-        ))}
+  {id:'dashboard',label:'Home'},
+  {id:'create',label:'Create'},
+  {id:'study',label:'Study'},
+  {id:'learn',label:'✨ Recall Map'},
+  {id:'settings',label:'Settings'},
+].map(({id,label})=>(
+  <div key={id} className="bnav-item"
+    onClick={()=>navTo(id)}
+    style={{color:screen===id?C.accent:C.text3, background:screen===id?C.accentDim:'transparent'}}>
+    <span style={{fontSize:id==='learn'?'13px':'11px',fontWeight:id==='learn'?'700':'500',lineHeight:1.3,textAlign:'center'}}>{label}</span>
+  </div>
+))}
       </div>
 
     </div>
