@@ -888,12 +888,11 @@ export default function Home() {
               </div>
               {createTab==='ai'&&(
                 <>
-                  <textarea value={inputText} onChange={e=>setInputText(e.target.value)} placeholder="Paste your notes, textbook excerpt, or any text here..." style={{width:'100%',minHeight:'180px',marginBottom:'14px',lineHeight:'1.7',fontSize:'15px'}}/>
-                  <div className="grid-3" style={{marginBottom:'16px'}}>
+                  <textarea value={inputText} onChange={e=>setInputText(e.target.value)} placeholder="Paste your notes, textbook excerpt, or any text here..." style={{width:'100%',minHeight:'220px',marginBottom:'14px',lineHeight:'1.7',fontSize:'15px'}}/>
                     {[['flashcards','Flashcards','Terms & definitions'],['quiz','Quiz','Multiple choice'],['sheet','Study sheet','Key points']].map(([id,name,desc])=>(
-                      <div key={name} onClick={()=>setOutputType(id)} style={{background:outputType===id?C.accentDim:C.s1,border:`2px solid ${outputType===id?C.accent:C.border}`,borderRadius:'12px',padding:'14px 10px',textAlign:'center',cursor:'pointer',transition:'all .15s'}}>
-                        <div style={{fontSize:'14px',fontWeight:'500',color:outputType===id?C.accentText:C.text,marginBottom:'2px'}}>{name}</div>
-                        <div style={{fontSize:'11px',color:C.text3}}>{desc}</div>
+                      <div key={name} onClick={()=>setOutputType(id)} style={{background:outputType===id?C.accentDim:C.s1,border:`2px solid ${outputType===id?C.accent:C.border}`,borderRadius:'10px',padding:'8px 6px',textAlign:'center',cursor:'pointer',transition:'all .15s'}}>
+                        <div style={{fontSize:'13px',fontWeight:'500',color:outputType===id?C.accentText:C.text,marginBottom:'1px'}}>{name}</div>
+                        <div style={{fontSize:'10px',color:C.text3}}>{desc}</div>
                       </div>
                     ))}
                   </div>
@@ -1037,7 +1036,7 @@ export default function Home() {
                         </div>
                       ) : (
                         <>
-                          <div className="grid-1" style={{marginBottom:'20px'}}>
+                          <div className="grid-3" style={{marginBottom:'20px'}}>
                             {subjects.map((s,i)=>(
                               <div key={i} style={{background:C.s1,border:`2px solid ${C.border}`,borderRadius:'16px',padding:'16px',cursor:'pointer',transition:'all .15s'}} onClick={()=>loadVideos(s)}>
                                 <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:'10px'}}>
