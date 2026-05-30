@@ -889,13 +889,14 @@ export default function Home() {
               {createTab==='ai'&&(
                 <>
                   <textarea value={inputText} onChange={e=>setInputText(e.target.value)} placeholder="Paste your notes, textbook excerpt, or any text here..." style={{width:'100%',minHeight:'220px',marginBottom:'14px',lineHeight:'1.7',fontSize:'15px'}}/>
-                    {[['flashcards','Flashcards','Terms & definitions'],['quiz','Quiz','Multiple choice'],['sheet','Study sheet','Key points']].map(([id,name,desc])=>(
-                      <div key={name} onClick={()=>setOutputType(id)} style={{background:outputType===id?C.accentDim:C.s1,border:`2px solid ${outputType===id?C.accent:C.border}`,borderRadius:'10px',padding:'8px 6px',textAlign:'center',cursor:'pointer',transition:'all .15s'}}>
-                        <div style={{fontSize:'13px',fontWeight:'500',color:outputType===id?C.accentText:C.text,marginBottom:'1px'}}>{name}</div>
-                        <div style={{fontSize:'10px',color:C.text3}}>{desc}</div>
-                      </div>
-                    ))}
-                  </div>
+<div className="grid-3" style={{marginBottom:'16px'}}>
+  {[['flashcards','Flashcards','Terms & definitions'],['quiz','Quiz','Multiple choice'],['sheet','Study sheet','Key points']].map(([id,name,desc])=>(
+    <div key={name} onClick={()=>setOutputType(id)} style={{background:outputType===id?C.accentDim:C.s1,border:`2px solid ${outputType===id?C.accent:C.border}`,borderRadius:'10px',padding:'8px 6px',textAlign:'center',cursor:'pointer',transition:'all .15s'}}>
+      <div style={{fontSize:'13px',fontWeight:'500',color:outputType===id?C.accentText:C.text,marginBottom:'1px'}}>{name}</div>
+      <div style={{fontSize:'10px',color:C.text3}}>{desc}</div>
+    </div>
+  ))}
+</div>
                   <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',gap:'12px'}}>
                     <div style={{display:'flex',alignItems:'center',gap:'8px',flex:1}}>
                       <label style={{fontSize:'13px',color:C.text2,flexShrink:0}}>{howMany}</label>
